@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./sing-up.component.scss']
 })
 export class SingUpComponent {
-
+  passs:any;
 }

@@ -1,1 +1,102 @@
-<p>sing-up works!</p>
+<div class="container">
+  <form #f="ngForm">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        aria-describedby="emailHelp"
+        required
+        name="name"
+        ngModel
+        #name="ngModel"
+      />
+      <div class="form-text" *ngIf="name.invalid && name.touched">
+        Plasee Name Is Required
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        aria-describedby="emailHelp"
+        required
+        email
+        name="email"
+        ngModel
+        #emal="ngModel"
+      />
+      <div class="form-text" *ngIf="emal.invalid && emal.touched">
+        Plasee Email Is Required
+      </div>
+      <div class="form-text" *ngIf="emal.errors?.['email']&&emal.touched">
+        Sorry Email Isnot matching whith Email
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        required
+        minlength="5"
+        name="password"
+        [(ngModel)]="passs"
+        #pass="ngModel"
+      />
+      <div class="form-text" *ngIf="pass.errors?.['required'] && pass.touched">
+        Plasee password Is Required
+      </div>
+      <div class="form-text" *ngIf="pass.errors?.['minlength'] && pass.touched">
+        Sorry password not equall caracher 6+
+      </div>
+      <div class="form-text" *ngIf="passs.length < 5">
+        Sorry password equall Is {{ passs.length }} Required caracher 6+
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label"
+        >Confirm-Password</label
+      >
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        required
+        name="conPass"
+        ngModel
+        #conPass="ngModel"
+      />
+      <div
+        class="form-text"
+        *ngIf="conPass.value !== pass.value && conPass.touched"
+      >
+        Sorry Confirm password not equall password
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Address</label>
+      <input
+        type="text"
+        class="form-control"
+        aria-describedby="emailHelp"
+        required
+        name="address"
+        ngModel
+        #address="ngModel"
+      />
+      <div class="form-text" *ngIf="address.invalid && address.touched">
+        Plasee Address Is Required
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="f.invalid || conPass.value !== pass.value"
+      class="btn btn-primary"
+    >
+      Submit
+    </button>
+  </form>
+</div>

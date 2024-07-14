@@ -1,1 +1,25 @@
-<p>login works!</p>
+<div class="container">
+  <form [formGroup]="myForm" >
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email</label>
+      <input type="email" class="form-control" id="exampleInputEmail1"
+      formControlName="email" aria-describedby="emailHelp">
+
+         <div id="emailHelp" class="form-textv alert alert-danger"
+          *ngIf="myForm.get('email').touched">The Email Is Required</div>
+
+
+        <div id="emailHelp" class="form-textv alert alert-danger"
+          *ngIf="myForm.get('email').touched &&myForm.get('email').error['email']">The Email Is Required</div>
+
+
+
+  </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
