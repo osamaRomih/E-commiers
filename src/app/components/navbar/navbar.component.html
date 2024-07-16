@@ -21,25 +21,31 @@
             aria-current="page"
             routerLink="/"
             routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}"
             >Home</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active"
+          <a class="nav-link" routerLink="/cart" routerLinkActive="active" *ngIf="isUser"
+            >Cart</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" *ngIf="isUser"
             >Dashboard</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/login" routerLinkActive="active"
+          <a class="nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!isUser"
             >Login</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/sign-up" routerLinkActive="active"
+          <a class="nav-link" routerLink="/sign-up" routerLinkActive="active" *ngIf="!isUser"
             >SignUp</a
           >
         </li>
-        <button class="btn btn-danger">LogOut</button>
+        <button class="btn btn-danger" *ngIf="isUser" (click)="logout()">LogOut</button>
       </ul>
     </div>
   </div>

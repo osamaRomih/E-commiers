@@ -1,0 +1,25 @@
+<table class="table table-striped container mt-4">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Total</th>
+      <th> Save</th>
+      <th> Deleted</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+
+  <tr *ngFor="let c of cart;index as i ">
+      <td>{{c.name |titlecase}}</td>
+      <td>{{c.price |currency}}</td>
+      <td><input type="text" placeholder="amount(Kg)" [(ngModel)]="c.amount"></td>
+      <td>{{c.price * c.amount |currency}}</td>
+      <td><button class="btn btn-primary" (click)="save(i)">Save</button></td>
+      <td><button class="btn btn-danger" (click)="delete(i)">Delete</button></td>
+  </tr>
+  </tbody>
+
+  <button (click)="deletAll()" class="btn btn-outline-danger form-control">Delete All</button>
+</table>

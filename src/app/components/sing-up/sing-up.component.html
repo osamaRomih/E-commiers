@@ -1,5 +1,5 @@
 <div class="container">
-  <form #f="ngForm">
+  <form #f="ngForm" (ngSubmit)="signup(f.value)" >
     <div class="mb-3">
       <label class="form-label">Name</label>
       <input
@@ -42,18 +42,18 @@
         required
         minlength="5"
         name="password"
-        [(ngModel)]="passs"
+        ngModel
         #pass="ngModel"
       />
       <div class="form-text" *ngIf="pass.errors?.['required'] && pass.touched">
         Plasee password Is Required
       </div>
       <div class="form-text" *ngIf="pass.errors?.['minlength'] && pass.touched">
-        Sorry password not equall caracher 6+
+        Sorry password not equall caracher 5+
       </div>
-      <div class="form-text" *ngIf="passs.length < 5">
+      <!-- <div class="form-text" *ngIf="passs.length < 5">
         Sorry password equall Is {{ passs.length }} Required caracher 6+
-      </div>
+      </div> -->
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label"
@@ -98,5 +98,7 @@
     >
       Submit
     </button>
+    <div class="alert alert-danger" *ngIf="massegErro"> {{massegErro}} </div>
   </form>
+
 </div>

@@ -6,8 +6,13 @@
         <div class="card-body">
           <h5 class="card-title">{{ g.name |titlecase}}</h5>
           <p class="card-text">{{ g.price|currency }}</p>
-          <a href="#" (click)="toCard(i)" class="btn btn-primary">Add To Good</a>
+          <a href="#" (click)="toCard(i)" *ngIf="add !== i" class="btn btn-primary">Add To Good</a>
         </div>
+        <div *ngIf="add===i" class="p-2">
+          <input class="form-control mb-2" type="number" #amount placeholder="amount(Kg) $">
+          <button (click)="buy(amount.value , i)" class="btn btn-primary">Buy</button>
+        </div>
+        <button class="btn btn-danger" (click)="delet(i)">delet</button>
       </div>
     </div>
   </div>
